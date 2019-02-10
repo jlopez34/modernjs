@@ -1,5 +1,8 @@
 //Metacharacter Symbols
-re = /^h/i;         //Must start with
+
+
+//Shorthand Character Classes
+re = /\w/;              //Word character - alphanumeric or  _re = /^h/i;         //Must start with
 re = / world$/i;    //Must ends with
 re = /^hello$/i;    //Must begin and end with
 re = /h.llo/i;      //Matches any ONE character
@@ -24,8 +27,25 @@ re = /Hel{2,}o/i;        //Must occur at least {m,} times
 //Paretheses () - Grouping
 re = /^([0-9]x){3}$/;
 
+//Shorthand Character Classes
+re = /\w/;              //Word character - alphanumeric or  _
+re = /\w+/;             //+ = one or more
+re = /\W/;              // Non-word character
+re = /\d/;              // Match any digit
+re = /\d+/;             // Match any digit one or more
+re = /\D/;              // Non-digit character
+re = /\s/;              // Match whitespace char
+re = /\S/;              // Match Non-whitespace char
+re = /Hell/i;           // word boundary - word that content expressions
+re = /Hell\b/i;         // word boundary exactly
+
+//Assertions
+re = /x(?=y)/;          // Match x only if followed by y
+re = /x(?=!y)/;         // Match x only if Not followed by y
+re = /x(?!y)/;          // Replace characters x by y 
+
 //String to match
-const str =  '3x3x3x';
+const str =  'xymotherfuckers!';
 
 //Log Results
 const result = re.exec(str);
@@ -33,9 +53,9 @@ console.log(result);
 
 function reTest(re, str){
     if(re.test(str)){
-        console.log(`${str} matches ${re}`);
+        console.log(`${str} matches ${re.source}`);
     }else{
-        console.log(`${str} does not match ${re}`);
+        console.log(`${str} does not match ${re.source}`);
     }
 }
 
